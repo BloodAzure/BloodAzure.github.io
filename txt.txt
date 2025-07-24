@@ -1,0 +1,139 @@
+const mineflayer = require('mineflayer');
+const readline = require('readline');
+
+const SERVER_HOST = 'localhost';
+const SERVER_PORT = 12345;
+const BOT_USERNAME = 'MyBot';
+const REGISTER_PASSWORD = 'ServerMagic';
+
+function createBot() {
+  const bot = mineflayer.createBot({
+    host: SERVER_HOST,
+    port: SERVER_PORT,
+    username: BOT_USERNAME,
+    auth: 'offline',
+  });
+
+  global.bot = bot;
+
+  bot.once('spawn', () => {
+    console.log('🟢 Bot spawned. Running auto-register/login...');
+    setTimeout(() => {
+      bot.chat(`/register ${REGISTER_PASSWORD} ${REGISTER_PASSWORD}`);
+      bot.chat(`/login ${REGISTER_PASSWORD}`);
+    }, 1000);
+  });
+
+  bot.on('end', () => {
+    console.warn('🔄 Disconnected. Reconnecting in 3s...');
+    setTimeout(createBot, 3000);
+  });
+
+  bot.on('error', (err) => {
+    console.error('❗ Error:', err.message);
+  });
+
+  bot.on('kicked', (reason) => {
+    console.error('⛔ Kicked:', reason);
+  });
+}
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+function dropOnePerTick(bot, slots, doneMsg) {
+  let index = 0;
+
+  const interval = setInterval(() => {
+    if (index >= slots.length) index = 0;
+
+    const slot = slots[index];
+    const item = bot.inventory.slots[slot];
+
+    if (item) {
+      // Drop one item (1 count)
+      bot.toss(item.type, null, 1, (err) => {
+        if (err) console.log('Error dropping item:', err.message);
+      });
+    }
+
+    // Check if all empty
+    const allEmpty = slots.every((s) => !bot.inventory.slots[s]);
+    if (allEmpty) {
+      clearInterval(interval);
+      console.log(doneMsg);
+    }
+
+    index++;
+  }, 50); // 50ms per tick approx.
+}
+
+rl.on('line', (input) => {
+  if (!global.bot || !global.bot.entity) {
+    console.log('⛔ Bot not ready.');
+    return;
+  }
+
+  input = input.trim();
+  if (input.length === 0) return;
+
+  if (input.startsWith('/')) {
+    // Send raw command chat to Minecraft
+    global.bot.chat(input);
+    return;
+  }
+
+  const [cmd, ...args] = input.split(' ');
+  const command = cmd.toLowerCase();
+
+  switch (command) {
+    case 'chat':
+      if (args.length === 0) return console.log('Usage: chat {message}');
+      global.bot.chat(args.join(' '));
+      break;
+
+    case 'back':
+      global.bot.setControlState('back', true);
+      setTimeout(() => global.bot.setControlState('back', false), 1000);
+      break;
+
+    case 'drop':
+      const heldItem = global.bot.inventory.slots[global.bot.getEquipmentDestSlot('hand')];
+      if (heldItem) global.bot.tossStack(heldItem);
+      else console.log('Nothing to drop');
+      break;
+
+    case 'drophotbar': {
+      const hotbarSlots = [];
+      for (let slot = 36; slot <= 44; slot++) hotbarSlots.push(slot);
+      dropOnePerTick(global.bot, hotbarSlots, 'Dropped all items from hotbar.');
+      break;
+    }
+
+    case 'dropinventory': {
+      const allSlots = [];
+      for (let slot = 0; slot < global.bot.inventory.slots.length; slot++) allSlots.push(slot);
+      dropOnePerTick(global.bot, allSlots, 'Dropped all items from entire inventory.');
+      break;
+    }
+
+    case 'help':
+      console.log('Available commands:');
+      console.log('  chat {message}   - Send a chat message');
+      console.log('  back             - Move backward briefly');
+      console.log('  drop             - Drop the currently held item');
+      console.log('  drophotbar       - Drop one item per tick from each hotbar slot until empty');
+      console.log('  dropinventory    - Drop one item per tick from each inventory slot until empty');
+      console.log('  /{command}       - Run any Minecraft command starting with "/"');
+      console.log('  help             - Show this help message');
+      break;
+
+    default:
+      console.log(`Invalid command: ${command}`);
+      break;
+  }
+});
+
+createBot();
