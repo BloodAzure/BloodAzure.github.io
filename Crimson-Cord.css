@@ -1,2 +1,261 @@
-@import url('https://discordstyles.github.io/RadialStatus/RadialStatus.css');:root{--main-color:#8A3535;--hover-color:#780000;--success-color:#FF0000;--danger-color:#0F0000;--url-color:#510000;--background-image:url('https://i.imgur.com/bFzre3R.jpeg');--background-shading:100%;--background-position:top center;--background-size:cover;--background-repeat:no-repeat;--background-attachment:fixed;--background-brightness:73%;--background-contrast:300%;--background-saturation:100%;--background-overlay:rgba(0,0,0,0.6);--user-popout-image:var(--background-image);--user-popout-position:center;--user-popout-size:cover;--user-popout-blur:3px;--user-modal-image:var(--background-image);--user-modal-blur:3px;--home-icon:url('https://i.imgur.com/xSzNjr7.jpeg');--home-position:center;--home-size:40px;--channel-unread:var(--main-color);--channel-color:rgba(255,255,255,0.3);--muted-color:rgba(255,255,255,0.1);--online-color:#43b581;--idle-color:#faa61a;--dnd-color:#982929;--streaming-color:#593695;--offline-color:#808080;--channels-width:220px;--members-width:240px;--rs-small-spacing:2px;--rs-medium-spacing:2px;--rs-large-spacing:2px;--rs-small-width:2px;--rs-medium-width:2px;--rs-large-width:2px;--rs-avatar-shape:50%;--rs-online-color:var(--online-color);--rs-idle-color:var(--idle-color);--rs-dnd-color:var(--dnd-color);--rs-offline-color:var(--offline-color);--rs-streaming-color:var(--streaming-color);--text-normal:#e0e0e0;--text-muted:#a0a0a0;--text-link:#d84f4f;--interactive-normal:#b8b8b8;--interactive-hover:#dcdcdc;--interactive-active:#ffffff;--background-floating:rgba(20,0,0,0.8);--background-primary:rgba(30,0,0,0.7);--background-secondary:rgba(40,0,0,0.7);--background-tertiary:rgba(50,0,0,0.7);}.message-2qnXI6{background-color:rgba(60,0,0,0.4)!important;border-left:3px solid var(--main-color);border-radius:4px;margin:4px;padding:8px 12px;transition:all 0.2s ease;}.message-2qnXI6:hover{background-color:rgba(80,0,0,0.5)!important;}.thin-1ybCId.scrollbar-3dvm_9::-webkit-scrollbar-thumb{background-color:var(--main-color);border-radius:5px;}.lookFilled-1Gx00P.colorBrand-3pXr91{background-color:var(--main-color);transition:all 0.2s ease;}.lookFilled-1Gx00P.colorBrand-3pXr91:hover{background-color:var(--hover-color);transform:translateY(-1px);}.channelTextArea-1VQBuV{background-color:var(--background-floating)!important;border:1px solid var(--main-color)!important;border-radius:8px;}.guilds-2JjMmN{background-color:var(--background-secondary)!important;}.nowPlayingColumn-1eCBCN{background-color:var(--background-secondary)!important;}body{font-family:'Whitney','Segoe UI','Helvetica Neue',sans-serif;}.avatarWrapper-1B9FTW[aria-label*="Online"]{box-shadow:0 0 5px 2px var(--online-color);}@keyframes bloodPulse{0%{box-shadow:0 0 0 0 rgba(138,53,53,0.7);}70%{box-shadow:0 0 0 10px rgba(138,53,53,0);}100%{box-shadow:0 0 0 0 rgba(138,53,53,0);}}.selected-aXhQR6 .layout-1qmrhw{animation:bloodPulse 2s infinite;}
+/* ===== BASE IMPORTS ===== */
+@import url('https://discordstyles.github.io/RadialStatus/RadialStatus.css');
 
+/* DiscordPlus replacement imports and fonts */
+@import url('https://plusinsta.github.io/discord-plus/src/i11n.css');
+@import url('https://plusinsta.github.io/discord-plus/src/DiscordPlus-extras.theme.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&family=Righteous&family=Kosugi&family=RocknRoll+One&family=Gothic+A1&family=Black+Han+Sans&family=PT+Sans+Caption&family=Russo+One&family=Palanquin+Dark&family=Raleway:wght@500&family=Commissioner&family=Alegreya+Sans:wght@700&family=Mitr&family=Lalezar&display=swap');
+
+/* Fallout 4 Terminal text + CRT effect (colors overridden later) */
+@import url('https://B4T3S.github.io/Fallout4TerminalTheme/mainRewrite.css');
+@import url('https://B4T3S.github.io/Fallout4TerminalTheme/css/crtEffect.css');
+
+/* ===== CORE VARIABLES ===== */
+:root {
+  /* ===== COLOR THEME ===== */
+  --main-color: #8A3535;
+  --hover-color: #780000;
+  --success-color: #FF0000;
+  --danger-color: #0F0000;
+  --url-color: #510000;
+
+  /* ===== BACKGROUND SETTINGS (FORCE CUSTOM BACKGROUND) ===== */
+  --background-image: url('https://i.imgur.com/wBP2GDb.jpeg') !important;
+  --background-position: center;
+  --background-size: cover;
+  --background-repeat: no-repeat;
+  --background-attachment: fixed;
+
+  /* ===== USER POPOUT/MODAL ===== */
+  --user-popout-image: var(--background-image);
+  --user-popout-blur: 3px;
+  --user-modal-image: var(--background-image);
+  --user-modal-blur: 3px;
+
+  /* ===== HOME ICON ===== */
+  --home-icon: url('https://i.imgur.com/xSzNjr7.jpeg');
+  --home-size: 40px;
+
+  /* ===== CHANNEL COLORS ===== */
+  --channel-unread: var(--main-color);
+  --channel-color: rgba(255, 255, 255, 0.3);
+  --muted-color: rgba(255, 255, 255, 0.1);
+
+  /* ===== STATUS COLORS ===== */
+  --online-color: #43b581;
+  --idle-color: #faa61a;
+  --dnd-color: #982929;
+  --streaming-color: #593695;
+  --offline-color: #808080;
+
+  /* ===== LAYOUT ===== */
+  --channels-width: 220px;
+  --members-width: 240px;
+
+  /* ===== RADIAL STATUS ===== */
+  --rs-small-spacing: 2px;
+  --rs-medium-spacing: 2px;
+  --rs-large-spacing: 2px;
+  --rs-small-width: 2px;
+  --rs-medium-width: 2px;
+  --rs-large-width: 2px;
+  --rs-avatar-shape: 50%;
+  --rs-online-color: var(--online-color);
+  --rs-idle-color: var(--idle-color);
+  --rs-dnd-color: var(--dnd-color);
+  --rs-offline-color: var(--offline-color);
+  --rs-streaming-color: var(--streaming-color);
+
+  /* ===== TEXT/INTERACTIVE ELEMENTS ===== */
+  --text-normal: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --text-link: #d84f4f;
+  --interactive-normal: #b8b8b8;
+  --interactive-hover: #dcdcdc;
+  --interactive-active: #ffffff;
+  --background-floating: rgba(20, 0, 0, 0.8);
+  --background-primary: rgba(30, 0, 0, 0.7);
+  --background-secondary: rgba(40, 0, 0, 0.7);
+  --background-tertiary: rgba(50, 0, 0, 0.7);
+
+  /* Fallout 4 Terminal font/text style variables (keep colors crimson) */
+  --rgb-highlight: 138, 53, 53; 
+  --rgb-text: 224, 224, 224;
+  --transition-time: 0.3s;
+  --custom-title-text: "Azure Studios Terminal";
+  --custom-title-font-size: 16px;
+  --custom-title-font-weight: bold;
+
+  /* DiscordPlus variables */
+  --dplus-radius-ui: 10px;
+  --dplus-spacing-ui: 10px;
+  --dplus-spacing-app: 10px;
+  --dplus-scrollbar-width: 10px;
+  --dplus-members-width: 240px;
+  --dplus-anim-short: .2s;
+  --dplus-anim-long: .5s;
+  --dplus-anim-sticky: .2s;
+  --dplus-anim-button: .25s;
+  --dplus-anim-button-appear: .25s;
+  --dplus-blur-scale: 100;
+}
+
+/* ===== DISCORD PLUS THEME VARIABLES ===== */
+.theme-dark {
+  --dplus-backdrop: url(https://i.imgur.com/3AiL3yN.png);
+
+  --dplus-accent-color-hue: 320;
+  --dplus-accent-color-saturation: 60%;
+  --dplus-accent-color-lightness: 31%;
+
+  --dplus-foreground-color-hue-base: 210;
+  --dplus-foreground-color-hue-links: 197;
+  --dplus-foreground-color-saturation-amount: 1;
+  --dplus-foreground-color-lightness-amount: 1;
+
+  --dplus-background-color-hue: 320;
+  --dplus-background-color-saturation-amount: 1;
+  --dplus-background-color-lightness-amount: 1;
+  --dplus-background-color-alpha: 0.8;
+
+  --dplus-background-color-lightness-025: 2.5%;
+  --dplus-background-color-lightness-050: 5.0%;
+  --dplus-background-color-lightness-075: 7.5%;
+  --dplus-background-color-lightness-100: 10.0%;
+  --dplus-background-color-lightness-125: 12.5%;
+  --dplus-background-color-lightness-150: 15.0%;
+  --dplus-background-color-lightness-200: 20.0%;
+  --dplus-background-color-lightness-250: 25.0%;
+  --dplus-background-color-lightness-500: 50.0%;
+}
+
+.theme-light {
+  --dplus-backdrop: url(https://i.imgur.com/3AiL3yN.png);
+
+  --dplus-accent-color-hue: 320;
+  --dplus-accent-color-saturation: 60%;
+  --dplus-accent-color-lightness: 31%;
+
+  --dplus-foreground-color-hue-base: 210;
+  --dplus-foreground-color-hue-links: 197;
+  --dplus-foreground-color-saturation-amount: 1;
+  --dplus-foreground-color-lightness-amount: 1;
+
+  --dplus-background-color-hue: 320;
+  --dplus-background-color-saturation-amount: 1;
+  --dplus-background-color-lightness-amount: 1;
+  --dplus-background-color-alpha: 0.8;
+
+  --dplus-background-color-lightness-025: 97.5%;
+  --dplus-background-color-lightness-050: 95.0%;
+  --dplus-background-color-lightness-075: 92.5%;
+  --dplus-background-color-lightness-100: 90.0%;
+  --dplus-background-color-lightness-125: 87.5%;
+  --dplus-background-color-lightness-150: 85.0%;
+  --dplus-background-color-lightness-200: 80.0%;
+  --dplus-background-color-lightness-250: 75.0%;
+  --dplus-background-color-lightness-500: 50.0%;
+}
+
+.theme-dark, .theme-light {
+  --dplus-accent-color-saturation-factor: calc(var(--dplus-accent-color-saturation) * var(--saturation-factor, 1));
+  --dplus-accent-ui: hsl(
+    var(--dplus-accent-color-hue),
+    var(--dplus-accent-color-saturation-factor),
+    calc(var(--dplus-accent-color-lightness) * 1)
+  );
+  --dplus-accent-ui-hover: hsl(
+    var(--dplus-accent-color-hue),
+    calc(var(--dplus-accent-color-saturation-factor) * 1.1),
+    calc(var(--dplus-accent-color-lightness) / 1.5)
+  );
+}
+
+/* ===== FORCE BACKGROUND IMAGE (NO DARK OVERLAY) ===== */
+.appMount-3lHmkl, .bg-1QIAus {
+  background-image: var(--background-image) !important;
+  background-position: var(--background-position) !important;
+  background-size: var(--background-size) !important;
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-color: transparent !important;
+  background-blend-mode: normal !important;
+}
+
+/* Optional: add a subtle dark overlay on background if you want it darker */
+/* Uncomment this block if you want a dark overlay */
+/*
+.appMount-3lHmkl::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+  z-index: 0;
+}
+*/
+
+/* ===== HOME ICON FIX ===== */
+.homeIcon-r0w4ny {
+  background: var(--home-icon) center/var(--home-size) no-repeat !important;
+  background-size: cover !important;
+  opacity: 1 !important;
+}
+.homeIcon-r0w4ny > path {
+  display: none !important;
+}
+
+/* ===== ENHANCED MESSAGE BUBBLES ===== */
+.message-2qnXI6 {
+  background-color: rgba(60, 0, 0, 0.4) !important;
+  border-left: 3px solid var(--main-color);
+  border-radius: 4px;
+  margin: 4px;
+  padding: 8px 12px;
+  transition: background-color 0.2s ease;
+}
+.message-2qnXI6:hover {
+  background-color: rgba(80, 0, 0, 0.5) !important;
+}
+
+/* ===== TYPEWRITER EFFECT FOR MESSAGES ===== */
+.messageContent-2qWWxC {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typewriter 1.2s steps(40, end) both;
+}
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+/* ===== BLOOD PULSE SELECTION ===== */
+@keyframes bloodPulse {
+  0% { box-shadow: 0 0 0 0 rgba(138, 53, 53, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(138, 53, 53, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(138, 53, 53, 0); }
+}
+.selected-aXhQR6 .layout-1qmrhw {
+  animation: bloodPulse 2s infinite;
+}
+
+/* ===== USER POPOUT/MODAL BACKGROUND ===== */
+.userPopout-3XzG_A,
+.root-1gCeng,
+.userProfileModal-1XK3zF {
+  background: var(--user-popout-image) center/cover no-repeat !important;
+  backdrop-filter: blur(var(--user-popout-blur)) !important;
+}
+
+/* ===== MESSAGE IMAGE STYLING ===== */
+.messageContent-2qWWxC img {
+  max-width: 400px !important;
+  max-height: 300px !important;
+  width: auto !important;
+  height: auto !important;
+  border-radius: 12px !important;
+  object-fit: cover !important;
+  display: block;
+  margin: 6px 0;
+}
