@@ -1,261 +1,268 @@
 /* ===== BASE IMPORTS ===== */
 @import url('https://discordstyles.github.io/RadialStatus/RadialStatus.css');
-
-/* DiscordPlus replacement imports and fonts */
-@import url('https://plusinsta.github.io/discord-plus/src/i11n.css');
+@import url('https://plusinsta.github.io/discord-plus/src/DiscordPlus-base.theme.css');
 @import url('https://plusinsta.github.io/discord-plus/src/DiscordPlus-extras.theme.css');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@400;700&family=Righteous&family=Kosugi&family=RocknRoll+One&family=Gothic+A1&family=Black+Han+Sans&family=PT+Sans+Caption&family=Russo+One&family=Palanquin+Dark&family=Raleway:wght@500&family=Commissioner&family=Alegreya+Sans:wght@700&family=Mitr&family=Lalezar&display=swap');
 
-/* Fallout 4 Terminal text + CRT effect (colors overridden later) */
-@import url('https://B4T3S.github.io/Fallout4TerminalTheme/mainRewrite.css');
-@import url('https://B4T3S.github.io/Fallout4TerminalTheme/css/crtEffect.css');
+:root,
+.visual-refresh,
+.visual-refresh.theme-dark {
+    --background-image: unset;
+    --background-position: center;
+    --background-size: cover;
+    --background-blur: 5px;
+    --background-brightness: 100%;
+}
+
+.theme-dark body {
+    background-image: var(--background-image);
+    background-position: var(--background-position);
+    background-size: var(--background-size);
+    backdrop-filter: blur(var(--background-blur)) brightness(var(--background-brightness))
+}
+
+.theme-dark .appMount__51fd7,
+.theme-dark .app__160d8,
+.theme-dark .bg__960e4,
+.theme-dark .guilds_c48ade,
+.theme-dark .scroller_ef3116,
+.theme-dark .sidebar_c48ade,
+.theme-dark .sidebar_c48ade::after,
+.theme-dark .container__2637a,
+.theme-dark .chat_f75fb0,
+.theme-dark .chatContent_f75fb0,
+.theme-dark .title_f75fb0,
+.theme-dark .searchBar__97492,
+.theme-dark .container_c8ffbb,
+.theme-dark .members_c8ffbb,
+.theme-dark .content_f75fb0,
+.theme-dark .container__91a9d,
+.theme-dark .channelTextArea__74017,
+.theme-dark .container__133bf,
+.theme-dark .section__00943,
+.theme-dark .nowPlayingColumn__133bf,
+.theme-dark .container__7d20c,
+.theme-dark .itemCard__7e549,
+.theme-dark .section__00943,
+.theme-dark .inset_bf1984,
+.theme-dark .container__9293f,
+.theme-dark .privateChannels__35e86,
+.theme-dark .scroller__99e7c,
+.theme-dark .layer__960e4,
+.theme-dark .standardSidebarView__23e6b,
+.theme-dark .sidebarRegionScroller__23e6b,
+.theme-dark .contentRegion__23e6b,
+.theme-dark .contentRegionScroller__23e6b,
+.theme-dark .container__4a84a,
+.theme-dark .stickyHeader_adb41f,
+.theme-dark .scroller_fb04e1,
+.theme-dark .pageWrapper_a3a4ce,
+.theme-dark .footer__214dc,
+.theme-dark .container_f369db {
+    background: rgba(0, 0, 0, 0) !important
+}
+
+body::after {
+    display: none;
+}
 
 /* ===== CORE VARIABLES ===== */
-:root {
-  /* ===== COLOR THEME ===== */
-  --main-color: #8A3535;
-  --hover-color: #780000;
-  --success-color: #FF0000;
-  --danger-color: #0F0000;
-  --url-color: #510000;
+:root,
+.visual-refresh,
+.visual-refresh.theme-dark {
+    /* Color Scheme */
+    --main-color: #8A3535;
+    --hover-color: #780000;
+    --success-color: #FF0000;
+    --danger-color: #0F0000;
+    --url-color: #510000;
 
-  /* ===== BACKGROUND SETTINGS (FORCE CUSTOM BACKGROUND) ===== */
-  --background-image: url('https://i.imgur.com/wBP2GDb.jpeg') !important;
-  --background-position: center;
-  --background-size: cover;
-  --background-repeat: no-repeat;
-  --background-attachment: fixed;
+    /* Background Settings */
+    --background-image: url('https://i.imgur.com/wBP2GDb.jpeg');
+    --background-position: center;
+    --background-size: cover;
+    --background-blur: 5px;
+    --background-brightness: 100%;
+    --background-repeat: no-repeat;
+    --background-attachment: fixed;
+    --background-overlay: rgba(0, 0, 0, 0.5);
 
-  /* ===== USER POPOUT/MODAL ===== */
-  --user-popout-image: var(--background-image);
-  --user-popout-blur: 3px;
-  --user-modal-image: var(--background-image);
-  --user-modal-blur: 3px;
+    /* Terminal Theme Colors */
+    --highlight: rgb(var(--rgb-highlight));
+    --rgb-highlight: 138, 53, 53;
+    --rgb-background: 0, 9, 0;
+    --background: rgb(var(--rgb-background));
+    --rgb-text: 224, 224, 224;
+    --text: rgb(var(--rgb-text));
 
-  /* ===== HOME ICON ===== */
-  --home-icon: url('https://i.imgur.com/xSzNjr7.jpeg');
-  --home-size: 40px;
+    /* Status Colors */
+    --online-color: #43b581;
+    --idle-color: #faa61a;
+    --dnd-color: #982929;
+    --streaming-color: #593695;
+    --offline-color: #808080;
+    --rgb-online-color: 57, 255, 20;
+    --rgb-afk-color: 255, 255, 51;
+    --rgb-dnd-color: 255, 0, 0;
+    --rgb-streaming-color: 188, 19, 254;
 
-  /* ===== CHANNEL COLORS ===== */
-  --channel-unread: var(--main-color);
-  --channel-color: rgba(255, 255, 255, 0.3);
-  --muted-color: rgba(255, 255, 255, 0.1);
+    /* UI Elements */
+    --scrollbar-thin-thumb: var(--highlight);
+    --scrollbar-auto-thumb: var(--highlight);
+    --scrollbar-thin-track: transparent;
+    --scrollbar-auto-track: transparent;
 
-  /* ===== STATUS COLORS ===== */
-  --online-color: #43b581;
-  --idle-color: #faa61a;
-  --dnd-color: #982929;
-  --streaming-color: #593695;
-  --offline-color: #808080;
+    /* Layout */
+    --channels-width: 220px;
+    --members-width: 240px;
 
-  /* ===== LAYOUT ===== */
-  --channels-width: 220px;
-  --members-width: 240px;
+    /* Radial Status */
+    --rs-small-spacing: 2px;
+    --rs-medium-spacing: 2px;
+    --rs-large-spacing: 2px;
+    --rs-small-width: 2px;
+    --rs-medium-width: 2px;
+    --rs-large-width: 2px;
+    --rs-avatar-shape: 50%;
 
-  /* ===== RADIAL STATUS ===== */
-  --rs-small-spacing: 2px;
-  --rs-medium-spacing: 2px;
-  --rs-large-spacing: 2px;
-  --rs-small-width: 2px;
-  --rs-medium-width: 2px;
-  --rs-large-width: 2px;
-  --rs-avatar-shape: 50%;
-  --rs-online-color: var(--online-color);
-  --rs-idle-color: var(--idle-color);
-  --rs-dnd-color: var(--dnd-color);
-  --rs-offline-color: var(--offline-color);
-  --rs-streaming-color: var(--streaming-color);
-
-  /* ===== TEXT/INTERACTIVE ELEMENTS ===== */
-  --text-normal: #e0e0e0;
-  --text-muted: #a0a0a0;
-  --text-link: #d84f4f;
-  --interactive-normal: #b8b8b8;
-  --interactive-hover: #dcdcdc;
-  --interactive-active: #ffffff;
-  --background-floating: rgba(20, 0, 0, 0.8);
-  --background-primary: rgba(30, 0, 0, 0.7);
-  --background-secondary: rgba(40, 0, 0, 0.7);
-  --background-tertiary: rgba(50, 0, 0, 0.7);
-
-  /* Fallout 4 Terminal font/text style variables (keep colors crimson) */
-  --rgb-highlight: 138, 53, 53; 
-  --rgb-text: 224, 224, 224;
-  --transition-time: 0.3s;
-  --custom-title-text: "Azure Studios Terminal";
-  --custom-title-font-size: 16px;
-  --custom-title-font-weight: bold;
-
-  /* DiscordPlus variables */
-  --dplus-radius-ui: 10px;
-  --dplus-spacing-ui: 10px;
-  --dplus-spacing-app: 10px;
-  --dplus-scrollbar-width: 10px;
-  --dplus-members-width: 240px;
-  --dplus-anim-short: .2s;
-  --dplus-anim-long: .5s;
-  --dplus-anim-sticky: .2s;
-  --dplus-anim-button: .25s;
-  --dplus-anim-button-appear: .25s;
-  --dplus-blur-scale: 100;
+    /* DiscordPlus Variables */
+    --dplus-radius-ui: 10px;
+    --dplus-spacing-ui: 10px;
+    --dplus-spacing-app: 10px;
+    --dplus-scrollbar-width: 10px;
+    --dplus-members-width: 240px;
+    --dplus-anim-short: .2s;
+    --dplus-anim-long: .5s;
+    --dplus-anim-sticky: .2s;
+    --dplus-anim-button: .25s;
+    --dplus-anim-button-appear: .25s;
+    --dplus-blur-scale: 100;
 }
 
-/* ===== DISCORD PLUS THEME VARIABLES ===== */
+/* ===== BACKGROUND IMPLEMENTATION ===== */
+.appMount-3lHmkl,
+.bg-1QIAus {
+    background: var(--background-overlay), var(--background-image) !important;
+    background-position: var(--background-position) !important;
+    background-size: var(--background-size) !important;
+    background-repeat: var(--background-repeat) !important;
+    background-attachment: var(--background-attachment) !important;
+    filter: blur(var(--background-blur)) brightness(var(--background-brightness));
+}
+
+/* ===== BASE STYLING ===== */
 .theme-dark {
-  --dplus-backdrop: url(https://i.imgur.com/3AiL3yN.png);
+    /* Background Layers */
+    --background-primary: rgba(0, 0, 0, 0.7);
+    --background-secondary: rgba(0, 0, 0, 0.6);
+    --background-secondary-alt: rgba(0, 0, 0, 0.8);
+    --background-tertiary: rgba(0, 0, 0, 0.5);
+    --background-accent: rgba(0, 0, 0, 0.4);
+    --background-floating: rgba(0, 0, 0, 0.8);
+    --background-nested-floating: rgba(0, 0, 0, 0.6);
 
-  --dplus-accent-color-hue: 320;
-  --dplus-accent-color-saturation: 60%;
-  --dplus-accent-color-lightness: 31%;
+    /* Text Colors */
+    --header-primary: var(--highlight);
+    --header-secondary: var(--highlight);
+    --text-normal: var(--text);
+    --text-muted: var(--text);
+    --text-link: var(--highlight);
+    --text-positive: var(--online-color);
+    --text-warning: var(--idle-color);
+    --text-danger: var(--dnd-color);
+    --text-brand: var(--highlight);
 
-  --dplus-foreground-color-hue-base: 210;
-  --dplus-foreground-color-hue-links: 197;
-  --dplus-foreground-color-saturation-amount: 1;
-  --dplus-foreground-color-lightness-amount: 1;
-
-  --dplus-background-color-hue: 320;
-  --dplus-background-color-saturation-amount: 1;
-  --dplus-background-color-lightness-amount: 1;
-  --dplus-background-color-alpha: 0.8;
-
-  --dplus-background-color-lightness-025: 2.5%;
-  --dplus-background-color-lightness-050: 5.0%;
-  --dplus-background-color-lightness-075: 7.5%;
-  --dplus-background-color-lightness-100: 10.0%;
-  --dplus-background-color-lightness-125: 12.5%;
-  --dplus-background-color-lightness-150: 15.0%;
-  --dplus-background-color-lightness-200: 20.0%;
-  --dplus-background-color-lightness-250: 25.0%;
-  --dplus-background-color-lightness-500: 50.0%;
+    /* Interactive Elements */
+    --interactive-normal: rgba(var(--rgb-highlight), 50%);
+    --interactive-hover: rgba(var(--rgb-highlight), 100%);
+    --interactive-active: rgb(var(--rgb-highlight));
 }
 
-.theme-light {
-  --dplus-backdrop: url(https://i.imgur.com/3AiL3yN.png);
-
-  --dplus-accent-color-hue: 320;
-  --dplus-accent-color-saturation: 60%;
-  --dplus-accent-color-lightness: 31%;
-
-  --dplus-foreground-color-hue-base: 210;
-  --dplus-foreground-color-hue-links: 197;
-  --dplus-foreground-color-saturation-amount: 1;
-  --dplus-foreground-color-lightness-amount: 1;
-
-  --dplus-background-color-hue: 320;
-  --dplus-background-color-saturation-amount: 1;
-  --dplus-background-color-lightness-amount: 1;
-  --dplus-background-color-alpha: 0.8;
-
-  --dplus-background-color-lightness-025: 97.5%;
-  --dplus-background-color-lightness-050: 95.0%;
-  --dplus-background-color-lightness-075: 92.5%;
-  --dplus-background-color-lightness-100: 90.0%;
-  --dplus-background-color-lightness-125: 87.5%;
-  --dplus-background-color-lightness-150: 85.0%;
-  --dplus-background-color-lightness-200: 80.0%;
-  --dplus-background-color-lightness-250: 75.0%;
-  --dplus-background-color-lightness-500: 50.0%;
+/* ===== COMPONENT STYLING ===== */
+/* Status Indicators */
+.wrapper-1VLyxH rect[fill="#593695"],
+.wrapper-1VLyxH rect[mask*=streaming] {
+    fill: var(--streaming-color) !important;
 }
 
-.theme-dark, .theme-light {
-  --dplus-accent-color-saturation-factor: calc(var(--dplus-accent-color-saturation) * var(--saturation-factor, 1));
-  --dplus-accent-ui: hsl(
-    var(--dplus-accent-color-hue),
-    var(--dplus-accent-color-saturation-factor),
-    calc(var(--dplus-accent-color-lightness) * 1)
-  );
-  --dplus-accent-ui-hover: hsl(
-    var(--dplus-accent-color-hue),
-    calc(var(--dplus-accent-color-saturation-factor) * 1.1),
-    calc(var(--dplus-accent-color-lightness) / 1.5)
-  );
+.wrapper-1VLyxH rect[fill="#43b581"],
+.wrapper-1VLyxH rect[mask*=online] {
+    fill: var(--online-color) !important;
 }
 
-/* ===== FORCE BACKGROUND IMAGE (NO DARK OVERLAY) ===== */
-.appMount-3lHmkl, .bg-1QIAus {
-  background-image: var(--background-image) !important;
-  background-position: var(--background-position) !important;
-  background-size: var(--background-size) !important;
-  background-repeat: no-repeat !important;
-  background-attachment: fixed !important;
-  background-color: transparent !important;
-  background-blend-mode: normal !important;
+.wrapper-1VLyxH rect[fill="#faa61a"],
+.wrapper-1VLyxH rect[mask*=idle] {
+    fill: var(--idle-color) !important;
 }
 
-/* Optional: add a subtle dark overlay on background if you want it darker */
-/* Uncomment this block if you want a dark overlay */
-/*
-.appMount-3lHmkl::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.35);
-  pointer-events: none;
-  z-index: 0;
-}
-*/
-
-/* ===== HOME ICON FIX ===== */
-.homeIcon-r0w4ny {
-  background: var(--home-icon) center/var(--home-size) no-repeat !important;
-  background-size: cover !important;
-  opacity: 1 !important;
-}
-.homeIcon-r0w4ny > path {
-  display: none !important;
+.wrapper-1VLyxH rect[fill="#f04747"],
+.wrapper-1VLyxH rect[mask*=dnd] {
+    fill: var(--dnd-color) !important;
 }
 
-/* ===== ENHANCED MESSAGE BUBBLES ===== */
+/* Message Styling */
 .message-2qnXI6 {
-  background-color: rgba(60, 0, 0, 0.4) !important;
-  border-left: 3px solid var(--main-color);
-  border-radius: 4px;
-  margin: 4px;
-  padding: 8px 12px;
-  transition: background-color 0.2s ease;
+    background-color: rgba(60, 0, 0, 0.4) !important;
+    border-left: 3px solid var(--main-color);
+    border-radius: 4px;
+    margin: 4px;
+    padding: 8px 12px;
+    transition: background-color 0.2s ease;
 }
+
 .message-2qnXI6:hover {
-  background-color: rgba(80, 0, 0, 0.5) !important;
+    background-color: rgba(80, 0, 0, 0.5) !important;
 }
 
-/* ===== TYPEWRITER EFFECT FOR MESSAGES ===== */
-.messageContent-2qWWxC {
-  display: inline-block;
-  overflow: hidden;
-  white-space: nowrap;
-  animation: typewriter 1.2s steps(40, end) both;
-}
-@keyframes typewriter {
-  from { width: 0; }
-  to { width: 100%; }
+/* Scrollbars */
+::-webkit-scrollbar-thumb {
+    background-color: var(--highlight) !important;
 }
 
-/* ===== BLOOD PULSE SELECTION ===== */
+::-webkit-scrollbar-track {
+    background: transparent !important;
+}
+
+/* Input Fields */
+.channelTextArea-1FufC0 {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+    border-color: var(--highlight) !important;
+}
+
+/* Home Icon */
+.homeIcon-r0w4ny {
+    background: var(--home-icon) center/var(--home-size) no-repeat !important;
+    background-size: cover !important;
+    opacity: 1 !important;
+}
+
+.homeIcon-r0w4ny>path {
+    display: none !important;
+}
+
+/* Blood Pulse Selection Animation */
 @keyframes bloodPulse {
-  0% { box-shadow: 0 0 0 0 rgba(138, 53, 53, 0.7); }
-  70% { box-shadow: 0 0 0 10px rgba(138, 53, 53, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(138, 53, 53, 0); }
-}
-.selected-aXhQR6 .layout-1qmrhw {
-  animation: bloodPulse 2s infinite;
+    0% {
+        box-shadow: 0 0 0 0 rgba(138, 53, 53, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(138, 53, 53, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(138, 53, 53, 0);
+    }
 }
 
-/* ===== USER POPOUT/MODAL BACKGROUND ===== */
+.selected-aXhQR6 .layout-1qmrhw {
+    animation: bloodPulse 2s infinite;
+}
+
+/* User Popout/Modal Background */
 .userPopout-3XzG_A,
 .root-1gCeng,
 .userProfileModal-1XK3zF {
-  background: var(--user-popout-image) center/cover no-repeat !important;
-  backdrop-filter: blur(var(--user-popout-blur)) !important;
-}
-
-/* ===== MESSAGE IMAGE STYLING ===== */
-.messageContent-2qWWxC img {
-  max-width: 400px !important;
-  max-height: 300px !important;
-  width: auto !important;
-  height: auto !important;
-  border-radius: 12px !important;
-  object-fit: cover !important;
-  display: block;
-  margin: 6px 0;
+    background: var(--background-image) center/cover no-repeat !important;
+    backdrop-filter: blur(var(--user-popout-blur)) !important;
 }
